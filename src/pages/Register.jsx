@@ -3,16 +3,19 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import { green } from '@mui/material/colors';
+import axios from 'axios';
+
+const BASE_URL = `http://localhost:7000/`
 
 const Register = () => {
 
   
 
   const [user, setUser] = useState({
-    firstname: '',
-    surname: '',
-    password: ''
+    firstName: '',
+    lastName: '',
+    password: '',
+    id: Date.now()
   });
 
 
@@ -21,13 +24,18 @@ const Register = () => {
 
   const changeValue = (e)=>{
     setUser(prev => ({...prev, [e.target.name]:e.target.value}))
+    setUser(prev => ({...prev, ['id']:Date.now()}))
   
   }
  
 
   const submitUser = () => {
+
+
+    axios.post(BASE_URL, user).then(res=>console.log(res))
+
     const cleanValue = () => {
-      const idArray = ['firstname', 'surname', 'password']
+      const idArray = ['firstName', 'lastName', 'password']
       
       idArray.map(val => {document.getElementById(val).value = ''})
       
@@ -46,10 +54,10 @@ const Register = () => {
         <div className='form'>
           <div className='form-frame'>
             <h1>Sign UP</h1>
-          <TextField onChange={changeValue}   id="firstname" label="Name" variant="outlined" name='firstname' />
-          <TextField onChange={changeValue} id="surname" label="Surname" variant="outlined" name='surname'/>
+          <TextField onChange={changeValue}   id="firstName" label="Name" variant="outlined" name='firstName' />
+          <TextField onChange={changeValue} id="lastName" label="SurName" variant="outlined" name='lastName'/>
           <TextField onChange={changeValue} id="password" label="Password" variant="outlined" name='password' type='password'/>
-          <Button onClick={submitUser} disabled = {user.firstname.length < 3 || user.surname.length < 3 || (user.password.search(/[A-Z]/)<0 || user.password.search(/[a-z]/) < 0 || user.password.search(/[0-9]/) < 0 || user.password.length < 5)} style = {{backgroundColor:'red', color:'white'}} variant="contained" >Sign Up</Button>
+          <Button onClick={submitUser} disabled = {user.firstName.length < 3 || user.lastName.length < 3 || (user.password.search(/[A-Z]/)<0 || user.password.search(/[a-z]/) < 0 || user.password.search(/[0-9]/) < 0 || user.password.length < 5)} style = {{backgroundColor:'green'}} variant="contained" >Sign Up</Button>
       
          
 

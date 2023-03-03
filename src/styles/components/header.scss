@@ -1,8 +1,18 @@
 
 
-.header {
+.header-block {
+    height: 60px;
+}
 
+.header {
+   
+    position: fixed;
+    width: 100%;
     background-color: rgb(3, 65, 59);
+    z-index: 11;
+    top: 0px;
+
+   
 
     .navbar {
         height: 60px;

@@ -3,7 +3,9 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
     return (
+        <div className="header-block">
         <div className="header">
+            
             <div className="container">
 
                 <ul className="navbar">
@@ -21,6 +23,7 @@ const Header = () => {
                     </li>
                 </ul>
             </div>
+        </div>
         </div>
     )
 }
