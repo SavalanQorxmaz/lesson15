@@ -1,0 +1,33 @@
+
+
+.header {
+
+    background-color: rgb(3, 65, 59);
+
+    .navbar {
+        height: 60px;
+        display: flex;
+        align-items: center;
+
+        & > * {
+            // margin-left: 20px;
+            
+            text-align: center;
+            width: 100px;
+            cursor: pointer;
+           
+
+            & > * {
+                color: white;
+                font-size: 20px;
+                transition: 0.1s;
+
+                &:hover {
+                    color: rgb(216, 231, 7);
+                    font-size: 22px;
+                }
+            }
+        
+        }
+    }
+}
